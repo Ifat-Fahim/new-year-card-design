@@ -141,8 +141,16 @@ export default class Animation extends Component {
         scene.add(earth);
 
         // MeshStandardMaterial WILL NOT WORK WITHOUT LIGHT.
-        let ambientLight = new THREE.AmbientLight(0xffffff);
-        scene.add(ambientLight);
+        let dirLight;
+
+        // SETTING AMBIENT LIGHT IN FRONT OF THE CAMERA AND BACKSIDE THE CAMERA.
+        dirLight = new THREE.DirectionalLight(0xffffff);
+        dirLight.position.set(0, 0, 1).normalize();
+        scene.add(dirLight);
+
+        dirLight = new THREE.DirectionalLight(0xffffff);
+        dirLight.position.set(0, 0, -1).normalize();
+        scene.add(dirLight);
 
         // CREATING ROTATING TEXTS.
         const loader1 = new THREE.FontLoader();
@@ -193,7 +201,6 @@ export default class Animation extends Component {
                 Modifier.set(direction, axis, angle).modify(geometry2); // CAUSES THE BEND.
 
                 // CREATING A GROUP OF THESE TEXTS.
-
                 let textGroup = new THREE.Group();
                 textGroup.add(textMesh1);
                 textGroup.add(textMesh2);
@@ -233,18 +240,24 @@ export default class Animation extends Component {
             stats.update();
             camera.position.y = 5;
 
+            // IF EFFECT IS NOT COMPLETED...
             if (!completed) {
-                if (timer > 150) {
+                if (timer > 120) {
+                    // IF TIMER IS GREATER THAN 121 (DEFAULT IS 0)
                     if (camera.position.z > 48) {
+                        // IF camera'S Z COORDINATE IS GREATER THAN 48 (DEFAULT IS 200 * textArray.length + 45 * 2)
                         if (!completed) {
+                            // IF EFFECT IS NOT COMPLETED
                             camera.position.z -= 3;
                         }
                     } else {
-                        camera.position.z = 45;
-                        controls.enabled = true;
-                        completed = true;
+                        // IF camera'S Z COORDINATE IS NOT GREATER THAN 48
+                        camera.position.z = 45; // SET IT TO 45
+                        controls.enabled = true; // ENABLE THE USER CONTROL
+                        completed = true; // MAKE THE completed TO true
                     }
                 } else {
+                    // IF timer IS NOT GREATER THAN 121
                     timer++;
                 }
             }
