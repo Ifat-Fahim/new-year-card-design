@@ -2,13 +2,9 @@
 
 ## OVERVIEW
 
----
-
 A [react](https://reactjs.org/) based new year welcome card design.
 
 ## BUILD WITH
-
----
 
 -   [React](https://reactjs.org/)
 -   [Three JS](https://threejs.org/)
@@ -16,8 +12,6 @@ A [react](https://reactjs.org/) based new year welcome card design.
 -   [Saas](https://sass-lang.com/)
 
 ## DEVELOPMENT
-
----
 
 ### PREREQUISITE
 
