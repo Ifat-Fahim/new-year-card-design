@@ -1,5 +1,9 @@
 # NEW YEAR CARD DESIGN
 
+<p align="center">
+<img alt="New Year Card Design" width="100%" src="https://raw.githubusercontent.com/Ifat-Fahim/new-year-card-design/main/src/img/mockup2.min.jpg">
+</p>
+
 ## OVERVIEW
 
 A [react](https://reactjs.org/) based new year welcome card design.
